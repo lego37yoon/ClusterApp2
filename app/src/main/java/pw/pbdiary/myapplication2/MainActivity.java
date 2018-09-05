@@ -20,25 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
     }
+    public void onButoonClicked(View v) {
+        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+        SimpleData data = new SimpleData(101, "Hello---!");
 
-    public void onButtonClicked(View v){
-        Intent intent = getApplicationContext().getPackageManager().getLaunchIntentForPackage("com.kakao.talk");
-        startActivity(intent);
-    }
-    //결과를 받으면 오는 것!
-    //Android Studio > MainActivity.java 열기 > 오른쪽클릭 > Generate > Override ... > onActivtyResult 선택.
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQUEST_CODE_MENU) {
-            //menuActivity가 보내준 것임을 알게 됨!
-            Toast.makeText(getApplicationContext(), "OnActivityResult 호출됨"+requestCode+"결과코드", Toast.LENGTH_LONG).show();
-
-            if(resultCode == RESULT_OK){
-                String name = data.getExtras().getString("name");
-                Toast.makeText(getApplicationContext(), "전달받은 이름: "+name, Toast.LENGTH_LONG).show();
-            }
-        }
+        intent.putExtra("data", data);
+        startActivityForResult(intent, REQUEST_CODE_MENU);
     }
 }
