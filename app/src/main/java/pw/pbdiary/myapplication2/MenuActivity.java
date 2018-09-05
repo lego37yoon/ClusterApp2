@@ -14,15 +14,13 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("name", "paperbox");
-                setResult(RESULT_OK, intent);
 
-                finish();
-            }
-        });
+        Intent intent = getIntent();
+        if(intent != null){
+            Bundle bundle = intent.getExtras();
+
+            SimpleData data = bundle.getParcelable("data");
+            button.setText("Number:"+data.getNumber()+"Msg: "+data.getMessage());
+        }
     }
 }
