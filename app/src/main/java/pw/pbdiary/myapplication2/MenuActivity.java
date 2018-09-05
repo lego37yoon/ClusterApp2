@@ -18,8 +18,10 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("name","paperbox");
-                setResult(RESULT_OK,intent);
+                intent.putExtra("name", "paperbox");
+                setResult(RESULT_OK, intent);
+
+                finish();
             }
         });
     }
