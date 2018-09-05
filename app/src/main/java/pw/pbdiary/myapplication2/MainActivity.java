@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-        TextView textView = (TextView) findViewById(R.id.textView);
         setContentView(R.layout.activity_main);
     }
 
@@ -35,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE_MENU) {
             //menuActivity가 보내준 것임을 알게 됨!
             Toast.makeText(getApplicationContext(), "OnActivityResult 호출됨"+requestCode+"결과코드", Toast.LENGTH_LONG).show();
+
+            if(resultCode == RESULT_OK){
+                String name = data.getExtras().getString("name");
+                Toast.makeText(getApplicationContext(), "전달받은 이름: "+name, Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
