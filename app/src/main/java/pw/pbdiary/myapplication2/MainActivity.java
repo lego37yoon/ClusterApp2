@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onButtonClicked(View v){
-        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivityForResult(intent, REQUEST_CODE_MENU);
+        Intent intent = getApplicationContext().getPackageManager().getLaunchIntentForPackage("com.kakao.talk");
+        startActivity(intent);
     }
     //결과를 받으면 오는 것!
     //Android Studio > MainActivity.java 열기 > 오른쪽클릭 > Generate > Override ... > onActivtyResult 선택.
